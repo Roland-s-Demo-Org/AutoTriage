@@ -10,6 +10,9 @@ const client = new MongoClient(process.env.MONGO_URI);
 app.post("/login", function (req, res) {
     const database = client.db("database");
     const Users = database.collection("users");
+    // Payload:
+    // req.body.name = { name: elon_musk; password: { $ne: '' }}
+    // would make any user log in as elon_musk (if he has an account)
     const user = Users.findOne({
         name: req.body.name,
         password: req.body.password,

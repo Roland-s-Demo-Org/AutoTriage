@@ -1,27 +1,14 @@
 import mysql from 'mysql2/promise';
+import { dbConfig } from 'configs';
 
-// Simulated database connection (assuming this is properly configured)
-const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: 'password123',
-    database: 'testdb'
-};
-
-/**
- * (VULNERABILITY)
- * The bottom-level function that performs an **insecure** SQL query.
- */
 async function doVulnerableQuery(userInput: string): Promise<void> {
     const connection = await mysql.createConnection(dbConfig);
 
     // **Vulnerable:** Directly concatenating user input into the SQL query (SQL Injection)
     const query = `SELECT * FROM Users WHERE username = '${userInput}'`;
 
-    console.log("[QUERY]:", query);
-
     try {
-        const [rows] = await connection.execute(query); // Actually executing the query
+        const [rows] = await connection.execute(query);
         console.log("Query Result:", rows);
     } catch (error) {
         console.error("Database Error:", error);
