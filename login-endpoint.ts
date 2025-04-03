@@ -14,8 +14,8 @@ app.post("/login", function (req, res) {
     // req.body.name = { name: elon_musk; password: { $ne: '' }}
     // would make any user log in as elon_musk (if he has an account)
     const user = Users.findOne({
-        name: req.body.name,
-        password: req.body.password,
+        name: String(req.body.name),
+        password: String(req.body.password),
     });
 
     if (user) {
