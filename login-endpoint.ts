@@ -16,7 +16,6 @@ app.post("/login", function (req, res) {
     const user = Users.findOne({
         name: String(req.body.name),
         password: String(req.body.password),
-        // you shouldn't see me in View Code Analysis modal.
     });
 
     if (user) {
