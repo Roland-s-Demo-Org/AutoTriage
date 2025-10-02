@@ -1,7 +1,7 @@
 import mysql from 'mysql2/promise';
 import { dbConfig } from 'configs';
 
-async function doVulnerableQuery(userInput: string): Promise<void> {
+export async function doVulnerableQuery(userInput: string): Promise<void> {
     const connection = await mysql.createConnection(dbConfig);
 
     // **Vulnerable:** Directly concatenating user input into the SQL query (SQL Injection)

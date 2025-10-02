@@ -1,10 +1,11 @@
+import {processInputA1, processInputA2, processInputA3} from "./storeData";
+
 /**
  * (1.1)
  */
-function handleRequestA(userInput: string): void {
-    // In a real scenario, this might parse HTTP request data, etc.
+async function handleRequestA(userInput: string): Promise<void> {
     console.log("[handleRequestA] Received input:", userInput);
-    processInputA1(userInput);
-    processInputA2(userInput);
-    processInputA3(userInput);
+    await processInputA1(userInput);
+    await processInputA2(userInput);
+    await processInputA3(userInput);
 }
