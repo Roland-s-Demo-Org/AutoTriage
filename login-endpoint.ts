@@ -1,7 +1,12 @@
 import express from "express";
+// Import helmet middleware to add security headers
+import helmet from "helmet";
 import { MongoClient } from "mongodb";
 
 const app = express();
+// Apply helmet middleware to set secure HTTP headers (e.g., X-Frame-Options, Content-Security-Policy)
+// This helps protect against common web vulnerabilities like XSS and clickjacking
+app.use(helmet());
 app.use(express.json());
 const PORT = 3000;
 
